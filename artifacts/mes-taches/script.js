@@ -4,6 +4,7 @@
   const input = document.querySelector('#task-input');
   const list = document.querySelector('#task-list');
   const count = document.querySelector('#task-count');
+  const clearCompleted = document.querySelector('#clear-completed');
   const empty = document.querySelector('#empty-state');
   const emptyTitle = document.querySelector('#empty-title');
   const emptySubtitle = document.querySelector('#empty-subtitle');
@@ -31,9 +32,16 @@
   function render() {
     list.replaceChildren();
     const remaining = tasks.filter(task => !task.done).length;
+    const completed = tasks.length - remaining;
     count.textContent = remaining === 0
-      ? 'Aucune tâche en attente'
-      : `${remaining} ${remaining === 1 ? 'tâche' : 'tâches'} restante${remaining > 1 ? 's' : ''}`;
+      ? 'Tout est fait'
+      : `${remaining} ${remaining === 1 ? 'tâche' : 'tâches'} à faire`;
+    clearCompleted.disabled = completed === 0;
+    clearCompleted.hidden = completed === 0;
+    clearCompleted.setAttribute(
+      'aria-label',
+      `Effacer les ${completed} ${completed === 1 ? 'tâche terminée' : 'tâches terminées'}`,
+    );
     empty.hidden = tasks.length > 0;
     if (tasks.length === 0) {
       emptyTitle.textContent = 'Tout est prêt pour commencer.';
@@ -81,6 +89,13 @@
 
     const taskId = button.dataset.taskId;
     tasks = tasks.filter(task => task.id !== taskId);
+    saveTasks();
+    render();
+  });
+
+  clearCompleted.addEventListener('click', () => {
+    if (clearCompleted.disabled) return;
+    tasks = tasks.filter(task => !task.done);
     saveTasks();
     render();
   });

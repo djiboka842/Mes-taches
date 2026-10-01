@@ -1,0 +1,454 @@
+.mes-taches-preview.minimal-tasks {
+  --ink: #263b35;
+  --muted: #788a82;
+  --line: #e3eae3;
+  --paper: #fffefa;
+  --canvas: #eef3ed;
+  --green: #426c58;
+  --green-dark: #315644;
+  --soft-green: #eaf1e8;
+  --red: #a45f54;
+
+  min-height: 100vh;
+  padding: 72px 24px 64px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 8% 4%, #dfeae0 0, transparent 35%),
+    radial-gradient(ellipse at 96% 76%, #f5eee0 0, transparent 33%),
+    var(--canvas);
+  font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+.mes-taches-preview.minimal-tasks::before {
+  position: absolute;
+  z-index: -1;
+  top: -205px;
+  right: -130px;
+  width: 430px;
+  height: 430px;
+  border: 1px solid #d3e1d4;
+  border-radius: 50%;
+  content: "";
+  opacity: .55;
+  pointer-events: none;
+}
+
+.mes-taches-preview.minimal-tasks *,
+.mes-taches-preview.minimal-tasks *::before,
+.mes-taches-preview.minimal-tasks *::after {
+  box-sizing: border-box;
+}
+
+.mes-taches-preview.minimal-tasks .app {
+  width: min(100%, 690px);
+  margin: 0 auto;
+  animation: minimal-arrive .55s cubic-bezier(.2, .7, .25, 1) both;
+}
+
+.mes-taches-preview.minimal-tasks .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 15px;
+  color: #66806f;
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+
+.mes-taches-preview.minimal-tasks .eyebrow::before {
+  width: 20px;
+  height: 1px;
+  background: #91a997;
+  content: "";
+}
+
+.mes-taches-preview.minimal-tasks h1 {
+  margin: 0;
+  color: #263b35;
+  font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(2.7rem, 7vw, 4.45rem);
+  font-weight: 500;
+  letter-spacing: -.075em;
+  line-height: .99;
+}
+
+.mes-taches-preview.minimal-tasks .intro {
+  max-width: 430px;
+  margin: 17px 0 34px;
+  color: #72837a;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.mes-taches-preview.minimal-tasks .panel {
+  overflow: hidden;
+  border: 1px solid #e3e9e1;
+  border-radius: 20px;
+  background: rgba(255, 254, 250, .94);
+  box-shadow: 0 24px 70px rgba(47, 73, 57, .075), 0 2px 8px rgba(47, 73, 57, .025);
+  backdrop-filter: blur(8px);
+}
+
+.mes-taches-preview.minimal-tasks form {
+  display: flex;
+  gap: 10px;
+  padding: 22px;
+  border-bottom: 1px solid #e8ede7;
+}
+
+.mes-taches-preview.minimal-tasks input[type="text"] {
+  min-width: 0;
+  min-height: 50px;
+  flex: 1;
+  padding: 0 16px;
+  border: 1px solid #e0e7df;
+  border-radius: 12px;
+  outline: none;
+  background: #fbfcf8;
+  color: var(--ink);
+  font: inherit;
+  font-size: .94rem;
+}
+
+.mes-taches-preview.minimal-tasks input[type="text"]::placeholder {
+  color: #98a59a;
+}
+
+.mes-taches-preview.minimal-tasks input[type="text"]:focus-visible {
+  border-color: #789982;
+  outline: 3px solid #78998255;
+  outline-offset: 2px;
+}
+
+.mes-taches-preview.minimal-tasks button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.mes-taches-preview.minimal-tasks .add-button {
+  min-width: 104px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--green);
+  color: #fffefa;
+  font-size: .9rem;
+  font-weight: 650;
+  transition: transform .16s ease, opacity .16s ease;
+}
+
+.mes-taches-preview.minimal-tasks .add-button:hover {
+  opacity: .91;
+}
+
+.mes-taches-preview.minimal-tasks .add-button:active {
+  transform: translateY(1px);
+}
+
+.mes-taches-preview.minimal-tasks .list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 24px 25px 12px;
+}
+
+.mes-taches-preview.minimal-tasks .list-header h2 {
+  margin: 0;
+  color: #536b5d;
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.mes-taches-preview.minimal-tasks .header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.mes-taches-preview.minimal-tasks .count {
+  color: #84938a;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.mes-taches-preview.minimal-tasks .clear-completed {
+  min-height: 34px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #788a7f;
+  font-size: .78rem;
+  transition: transform .16s ease, opacity .16s ease;
+}
+
+.mes-taches-preview.minimal-tasks .clear-completed:hover {
+  color: var(--green-dark);
+  background: #eff4ed;
+}
+
+.mes-taches-preview.minimal-tasks .clear-completed:active {
+  transform: translateY(1px);
+}
+
+.mes-taches-preview.minimal-tasks ul {
+  margin: 0;
+  padding: 0 23px 15px;
+  list-style: none;
+}
+
+.mes-taches-preview.minimal-tasks .task {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  border-bottom: 1px solid #edf0eb;
+  animation: minimal-arrive .22s ease both;
+}
+
+.mes-taches-preview.minimal-tasks .task:last-child {
+  border-bottom: 0;
+}
+
+.mes-taches-preview.minimal-tasks .check {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  place-items: center;
+  padding: 0;
+  border: 1.5px solid #bdcbbd;
+  border-radius: 50%;
+  background: transparent;
+  color: #fffefa;
+  transition: transform .17s ease, background-color .17s ease, border-color .17s ease;
+}
+
+.mes-taches-preview.minimal-tasks .check:hover {
+  border-color: #6e9277;
+  transform: scale(1.06);
+}
+
+.mes-taches-preview.minimal-tasks .check[aria-pressed="true"] {
+  border-color: var(--green);
+  background: var(--green);
+}
+
+.mes-taches-preview.minimal-tasks .check svg {
+  width: 12px;
+  height: 12px;
+}
+
+.mes-taches-preview.minimal-tasks .task-text {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  color: #354a40;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.mes-taches-preview.minimal-tasks .task.done .task-text {
+  color: #9ca89e;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #bdc8bd;
+}
+
+.mes-taches-preview.minimal-tasks .delete {
+  display: inline-flex;
+  min-width: 38px;
+  min-height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #9aa69d;
+  transition: transform .16s ease, opacity .16s ease, background-color .16s ease;
+}
+
+.mes-taches-preview.minimal-tasks .delete:hover {
+  background: #f7eeea;
+  color: var(--red);
+}
+
+.mes-taches-preview.minimal-tasks .delete:active {
+  transform: scale(.96);
+}
+
+.mes-taches-preview.minimal-tasks .delete svg {
+  width: 17px;
+  height: 17px;
+}
+
+.mes-taches-preview.minimal-tasks .delete-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.mes-taches-preview.minimal-tasks .empty {
+  padding: 43px 20px 47px;
+  color: #788a82;
+  text-align: center;
+}
+
+.mes-taches-preview.minimal-tasks .empty-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 15px;
+  place-items: center;
+  border-radius: 16px;
+  background: #edf3e9;
+  color: var(--green);
+}
+
+.mes-taches-preview.minimal-tasks .empty-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.mes-taches-preview.minimal-tasks .empty p {
+  margin: 0;
+  color: #52695b;
+  font-size: .97rem;
+}
+
+.mes-taches-preview.minimal-tasks .empty small {
+  display: block;
+  margin-top: 6px;
+  color: #8c9a90;
+  font-size: .83rem;
+}
+
+.mes-taches-preview.minimal-tasks .footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 25px 18px;
+  border-top: 1px solid #e8ede7;
+  color: #839188;
+  font-size: .77rem;
+}
+
+.mes-taches-preview.minimal-tasks .save-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mes-taches-preview.minimal-tasks .save-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #82a789;
+}
+
+.mes-taches-preview.minimal-tasks :focus-visible {
+  outline: 3px solid #73967c8c;
+  outline-offset: 3px;
+}
+
+@keyframes minimal-arrive {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  .mes-taches-preview.minimal-tasks {
+    min-height: 100vh;
+    padding: 48px 16px 34px;
+  }
+
+  .mes-taches-preview.minimal-tasks::before {
+    top: -275px;
+    right: -250px;
+  }
+
+  .mes-taches-preview.minimal-tasks .intro {
+    margin: 14px 0 25px;
+  }
+
+  .mes-taches-preview.minimal-tasks form {
+    gap: 8px;
+    padding: 15px;
+  }
+
+  .mes-taches-preview.minimal-tasks input[type="text"] {
+    padding: 0 12px;
+    font-size: .87rem;
+  }
+
+  .mes-taches-preview.minimal-tasks .add-button {
+    min-width: 84px;
+    padding: 0 12px;
+    font-size: .85rem;
+  }
+
+  .mes-taches-preview.minimal-tasks .list-header {
+    align-items: flex-start;
+    padding: 19px 16px 10px;
+  }
+
+  .mes-taches-preview.minimal-tasks .header-meta {
+    gap: 4px;
+  }
+
+  .mes-taches-preview.minimal-tasks .count {
+    padding-top: 8px;
+    font-size: .72rem;
+  }
+
+  .mes-taches-preview.minimal-tasks .clear-completed {
+    font-size: .72rem;
+  }
+
+  .mes-taches-preview.minimal-tasks ul {
+    padding: 0 15px 12px;
+  }
+
+  .mes-taches-preview.minimal-tasks .task {
+    gap: 11px;
+    min-height: 62px;
+  }
+
+  .mes-taches-preview.minimal-tasks .task-text {
+    font-size: .9rem;
+  }
+
+  .mes-taches-preview.minimal-tasks .delete {
+    min-width: 34px;
+    min-height: 34px;
+  }
+
+  .mes-taches-preview.minimal-tasks .footer {
+    padding: 14px 16px 16px;
+    font-size: .7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mes-taches-preview.minimal-tasks *,
+  .mes-taches-preview.minimal-tasks *::before,
+  .mes-taches-preview.minimal-tasks *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -3,25 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f5f0">
+  <meta name="theme-color" content="#eef3ed">
   <title>Mes tâches</title>
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
 </head>
-<body>
+<body class="minimal-tasks">
   <main class="app">
     <p class="eyebrow">Votre espace personnel</p>
     <h1>Mes tâches</h1>
-    <p class="intro">Une chose à la fois. Vous avancez déjà.</p>
+    <p class="intro">Faites un peu de place dans votre tête. Le reste peut attendre son tour.</p>
 
     <section class="panel" aria-label="Liste de tâches">
       <form id="task-form">
-        <input id="task-input" type="text" maxlength="200" placeholder="Que souhaitez-vous faire ?" aria-label="Nouvelle tâche" autocomplete="off" required>
+        <label class="visually-hidden" for="task-input">Nouvelle tâche</label>
+        <input id="task-input" type="text" maxlength="200" placeholder="Que souhaitez-vous faire ?" autocomplete="off" required>
         <button class="add-button" type="submit">Ajouter</button>
       </form>
       <div class="list-header">
         <h2>À faire</h2>
-        <span id="task-count" class="count" aria-live="polite"></span>
+        <div class="list-actions">
+          <span id="task-count" class="count" aria-live="polite"></span>
+          <button id="clear-completed" class="clear-completed" type="button" disabled hidden>
+            Effacer les terminées
+          </button>
+        </div>
       </div>
       <ul id="task-list" aria-label="Vos tâches"></ul>
       <div id="empty-state" class="empty" hidden>
@@ -33,7 +39,7 @@
       </div>
       <div class="footer">
         <span class="save-note"><span class="save-dot" aria-hidden="true"></span>Enregistré sur cet appareil</span>
-        <span>Vos tâches restent privées</span>
+        <span>Votre liste, à votre rythme</span>
       </div>
     </section>
   </main>
