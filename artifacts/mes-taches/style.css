@@ -223,6 +223,9 @@ button {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin: 0;
   padding: 0 23px 15px;
   list-style: none;
@@ -233,12 +236,29 @@ ul {
   align-items: center;
   gap: 14px;
   min-height: 64px;
-  border-bottom: 1px solid #edf0eb;
+  padding: 12px 14px;
+  border: 1px solid #efe7b5;
+  border-radius: 4px;
+  background: #fff7cd;
+  box-shadow: 0 6px 14px rgba(47, 73, 57, .07), 0 1px 3px rgba(47, 73, 57, .04);
+  transform: rotate(-.35deg);
   animation: minimal-arrive .22s ease both;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
 
-.task:last-child {
-  border-bottom: 0;
+.task:nth-child(3n + 2) {
+  transform: rotate(.4deg);
+}
+
+.task:nth-child(3n) {
+  transform: rotate(-.15deg);
+}
+
+.task:hover,
+.task:focus-within {
+  z-index: 1;
+  box-shadow: 0 9px 18px rgba(47, 73, 57, .1), 0 2px 5px rgba(47, 73, 57, .04);
+  transform: rotate(0) translateY(-1px);
 }
 
 .check {
@@ -453,6 +473,7 @@ ul {
   .task {
     gap: 11px;
     min-height: 62px;
+    padding: 11px 12px;
   }
 
   .task-text {
