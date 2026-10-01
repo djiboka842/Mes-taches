@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Mes tâches"
+description = "Une application personnelle de liste de tâches en français. Permet d’ajouter, de terminer et de supprimer des tâches, enregistrées localement dans le navigateur."
+version = "1.0.0"
+id = "artifacts/mes-taches"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25348
+
+[services.development]
+run = "pnpm --filter @workspace/mes-taches run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mes-taches", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mes-taches/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25348"
+BASE_PATH = "/"
