@@ -64,7 +64,7 @@ export function Minimal() {
 
         <section className="panel" aria-label="Liste de tâches">
           <form onSubmit={addTask}>
-            <label className="delete-label" htmlFor="minimal-new-task">Nouvelle tâche</label>
+            <label className="visually-hidden" htmlFor="minimal-new-task">Nouvelle tâche</label>
             <input
               id="minimal-new-task"
               type="text"
