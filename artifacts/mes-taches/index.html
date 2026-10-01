@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta id="theme-color" name="theme-color" content="#f3edde">
   <title>Mes tâches</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/script.js"></script>
+</head>
+<body class="minimal-tasks">
   <script>
     try {
       if (localStorage.getItem('mes-taches-theme-v1') === 'dark') {
-        document.documentElement.dataset.theme = 'dark';
+        document.body.classList.add('dark-mode');
       }
     } catch {}
   </script>
-  <link rel="stylesheet" href="/style.css">
-  <script src="/script.js" defer></script>
-</head>
-<body class="minimal-tasks">
   <main class="app">
     <header class="page-header">
       <div class="header-topline">

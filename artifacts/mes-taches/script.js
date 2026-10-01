@@ -41,7 +41,7 @@
   }
 
   function updateTheme(isDark, persist = false) {
-    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+    document.body.classList.toggle('dark-mode', isDark);
     themeToggle.setAttribute('aria-pressed', String(isDark));
     themeColor.content = isDark ? '#1b1e1a' : '#f3edde';
     if (!persist) return;
@@ -169,7 +169,7 @@
   });
 
   themeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.dataset.theme !== 'dark';
+    const isDark = !document.body.classList.contains('dark-mode');
     updateTheme(isDark, true);
   });
 
@@ -183,6 +183,12 @@
     if (!button) return;
     event.preventDefault();
     removeTask(button.dataset.taskId, true);
+  });
+
+  input.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' || event.isComposing) return;
+    event.preventDefault();
+    form.requestSubmit();
   });
 
   form.addEventListener('submit', event => {
@@ -201,6 +207,6 @@
     input.focus();
   });
 
-  updateTheme(document.documentElement.dataset.theme === 'dark');
+  updateTheme(document.body.classList.contains('dark-mode'));
   render();
 })();
