@@ -103,21 +103,25 @@ ul { margin: 0; padding: 0 20px 10px; list-style: none; }
 .task.done .task-text { color: #9aa19a; text-decoration: line-through; text-decoration-thickness: 1.5px; }
 
 .delete {
-  display: grid;
-  flex: 0 0 34px;
-  width: 34px;
-  height: 34px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
   place-items: center;
-  padding: 0;
+  padding: 0 10px;
   border: 0;
   border-radius: 9px;
   background: transparent;
   color: #949b94;
+  white-space: nowrap;
   transition: background .15s, color .15s;
 }
 
 .delete:hover { background: #fbefed; color: var(--red); }
-.delete svg { width: 17px; height: 17px; }
+.delete svg { flex: 0 0 17px; width: 17px; height: 17px; }
+.delete-label { font-size: .82rem; font-weight: 600; }
 .empty { padding: 35px 16px 39px; text-align: center; color: var(--muted); }
 .empty-icon { display: grid; width: 47px; height: 47px; margin: 0 auto 13px; place-items: center; border-radius: 15px; background: var(--soft-green); color: var(--green); }
 .empty-icon svg { width: 22px; height: 22px; }

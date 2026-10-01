@@ -66,17 +66,24 @@
       remove.type = 'button';
       remove.className = 'delete';
       remove.setAttribute('aria-label', `Supprimer « ${task.text} »`);
-      remove.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M5 7l1 14h12l1-14M9 7V4h6v3"/></svg>';
-      remove.addEventListener('click', () => {
-        tasks = tasks.filter(item => item.id !== task.id);
-        saveTasks();
-        render();
-      });
+      remove.dataset.action = 'delete';
+      remove.dataset.taskId = task.id;
+      remove.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M5 7l1 14h12l1-14M9 7V4h6v3"/></svg><span class="delete-label">Supprimer</span>';
 
       item.append(toggle, text, remove);
       list.append(item);
     }
   }
+
+  list.addEventListener('click', event => {
+    const button = event.target.closest('button[data-action="delete"]');
+    if (!button || !list.contains(button)) return;
+
+    const taskId = button.dataset.taskId;
+    tasks = tasks.filter(task => task.id !== taskId);
+    saveTasks();
+    render();
+  });
 
   form.addEventListener('submit', event => {
     event.preventDefault();
